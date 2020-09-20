@@ -1,0 +1,25 @@
+SilverStripe\Control\Director:
+  rules:
+    'graphql': '%$SilverStripe\GraphQL\Controller.default'
+SilverStripe\GraphQL\Manager:
+  schemas:
+    default:
+      scaffolding:
+        types:
+          Page:
+            fields: [ID, Title, MenuTitle, URLSegment, RelativeLink]
+            operations:
+              read:
+                paginate: false
+              readOne:
+                name: page
+                args:
+                  UrlSegment: String  # TODO: Sub-URL
+                resolver: App\Api\PageResolver
+            nestedQueries:
+              Elements:
+                paginate: false
+              Menu:
+                paginate: false
+          DNADesign\Elemental\Models\BaseElement:
+            fields: [ID, Title, ContentFieldsJson]

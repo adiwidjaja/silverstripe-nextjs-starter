@@ -1,0 +1,9 @@
+Page:
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension
+  disallowed_elements:
+    - DNADesign\Elemental\Models\ElementContent
+    - App\Elements\BaseElement
+DNADesign\Elemental\Models\BaseElement:
+  extensions:
+    - App\Api\BaseElementExtension
