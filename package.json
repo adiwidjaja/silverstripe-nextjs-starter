@@ -1,0 +1,28 @@
+{
+  "name": "nextjs-silverstripe-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:adiwidjaja/silverstripe-nextjs-starter.git",
+  "author": "Andy Adiwidjaja <adiwidjaja@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@types/styled-components": "^5.1.3",
+    "dotenv": "^8.2.0",
+    "next": "^9.5.3",
+    "react": "^16.13.1",
+    "react-animate-height": "^2.0.23",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.2.0",
+    "styled-reset": "^4.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.1",
+    "@types/react": "^16.9.49",
+    "typescript": "^4.0.3"
+  }
+}

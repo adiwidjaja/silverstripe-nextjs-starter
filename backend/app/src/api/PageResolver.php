@@ -15,7 +15,10 @@ class PageResolver implements OperationResolver
 {
     public function resolve($object, array $args, $context, ResolveInfo $info)
     {
-        $page = Page::get()->filter("UrlSegment", $args['UrlSegment'])->first();
+        $url = $args['UrlSegment'];
+        if($url == "")
+            $url = "home";
+        $page = Page::get()->filter("UrlSegment", $url)->first();
         Director::set_current_page($page);
         return $page;
     }

@@ -7,7 +7,7 @@ SilverStripe\GraphQL\Manager:
       scaffolding:
         types:
           Page:
-            fields: [ID, Title, MenuTitle, URLSegment, RelativeLink]
+            fields: [ID, Title, MenuTitle, ClassName, URLSegment, RelativeLink]
             operations:
               read:
                 paginate: false
@@ -22,4 +22,4 @@ SilverStripe\GraphQL\Manager:
               Menu:
                 paginate: false
           DNADesign\Elemental\Models\BaseElement:
-            fields: [ID, Title, ContentFieldsJson]
+            fields: [ID, Title, ClassName, ContentFieldsJson]
