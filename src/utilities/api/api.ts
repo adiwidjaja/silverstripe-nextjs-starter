@@ -31,6 +31,11 @@ query {
       id: ID,
       menuTitle: MenuTitle,
       link: FrontendLink,
+      children: Children {
+          id: ID,
+          menuTitle: MenuTitle,
+          link: FrontendLink,
+      }
     },
     elements: Elements {
       id: ID,

@@ -5,6 +5,7 @@ namespace {
     use SilverStripe\CMS\Model\RedirectorPage;
     use SilverStripe\CMS\Model\SiteTree;
     use SilverStripe\Control\Director;
+    use SilverStripe\Core\Environment;
 
     class Page extends SiteTree
     {
@@ -31,6 +32,12 @@ namespace {
 
         public function SiteTitle() {
             return $this->getSiteConfig()->Title;
+        }
+
+        public function PreviewLink($action = null) {
+            $link = $this->FrontendLink($action);
+            $slash = substr($link, 0, 1) == "/" ? "" : "/";
+            return Environment::getEnv('FRONTEND_URL').$slash.$link;
         }
     }
 }

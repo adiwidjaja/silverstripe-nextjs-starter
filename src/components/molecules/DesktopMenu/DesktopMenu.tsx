@@ -9,7 +9,8 @@ export interface IMenuItem {
   title: string,
   menuTitle: string,
   link: string,
-  section: boolean
+  section: boolean,
+  children: Array<IMenuItem>,
 }
 
 export interface IDesktopMenu {
@@ -19,6 +20,11 @@ export interface IDesktopMenu {
 
 const DesktopMenuStyled = styled.ul`
   display: flex;
+`;
+
+const SubMenuStyled = styled.ul`
+  display: flex;
+  position: absolute;
 `;
 
 interface IDesktopMenuLink {
@@ -49,12 +55,12 @@ const normalizeLink = (href:string) => {
   return normalized;
 };
 
-const DesktopMenu: React.FunctionComponent<IDesktopMenu> = ({
+const SubMenu: React.FunctionComponent<IDesktopMenu> = ({
   menuItems,
   currentId,
 }) => {
   return (
-      <DesktopMenuStyled>
+      <SubMenuStyled>
         {menuItems.map((item, index) => {
 
           const link = normalizeLink(item.link);
@@ -69,6 +75,37 @@ const DesktopMenu: React.FunctionComponent<IDesktopMenu> = ({
                 >
                   <DesktopMenuLink active={item.id == currentId}>{item.menuTitle}</DesktopMenuLink>
                 </Link>
+              </li>
+          );
+        })}
+      </SubMenuStyled>
+  );
+}
+
+const DesktopMenu: React.FunctionComponent<IDesktopMenu> = ({
+  menuItems,
+  currentId,
+}) => {
+  return (
+      <DesktopMenuStyled>
+        {menuItems.map((item, index) => {
+
+          const link = normalizeLink(item.link);
+
+          const childrenIds = item.children ? item.children.map(child => child.id) : [];
+          const active = (item.id == currentId) || childrenIds.includes(currentId);
+
+          return (
+              <li key={`item-${index}`}>
+                <Link href={{
+                  pathname: '/[[...pageurl]]'
+                }}  // TODO: Querystring
+                      as={`${link}`}
+                      passHref
+                >
+                  <DesktopMenuLink active={active}>{item.menuTitle}</DesktopMenuLink>
+                </Link>
+                {(item.children && active) ? <SubMenu menuItems={item.children} currentId={currentId}/> : null}
               </li>
           );
         })}
