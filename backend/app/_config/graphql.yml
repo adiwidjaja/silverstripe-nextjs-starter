@@ -7,7 +7,7 @@ SilverStripe\GraphQL\Manager:
       scaffolding:
         types:
           Page:
-            fields: [ID, Title, MenuTitle, ClassName, URLSegment, RelativeLink]
+            fields: [ID, Title, MenuTitle, ClassName, URLSegment, SiteTitle, FrontendLink]
             operations:
               read:
                 paginate: false

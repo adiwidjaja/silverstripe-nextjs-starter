@@ -7,6 +7,7 @@ import FaqElement from "../../molecules/FaqElement/FaqElement";
 import {IMenuItem} from "../../molecules/DesktopMenu/DesktopMenu";
 
 export interface IPage {
+  id: number,
   title?: string;
   siteTitle?: string;
   menu?: Array<IMenuItem>;
@@ -23,6 +24,7 @@ const elementMap = {
 const PageStyled = styled.div``;
 
 const Page: React.FunctionComponent<IPage> = ({
+  id,
   title,
   siteTitle,
   menu,
@@ -34,7 +36,7 @@ const Page: React.FunctionComponent<IPage> = ({
       <Head>
         <title>{title} - {siteTitle}</title>
       </Head>
-      <PageHeader menu={menu} siteTitle={siteTitle}/>
+      <PageHeader menu={menu} siteTitle={siteTitle} currentId={id}/>
       {elements ? elements.map((element, index) => {
         // @ts-ignore
         const ElementComponent: any = elementMap[element.className];

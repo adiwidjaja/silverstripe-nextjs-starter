@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import {menutext} from "../../../styles/typography";
+import {useRouter} from "next/router";
 
 export interface IMenuItem {
   id: number,
@@ -13,7 +14,8 @@ export interface IMenuItem {
 }
 
 export interface IDesktopMenu {
-  menuItems: Array<IMenuItem>
+  menuItems: Array<IMenuItem>;
+  currentId: number;
 }
 
 const DesktopMenuStyled = styled.ul`
@@ -30,6 +32,7 @@ const DesktopMenuLink = styled.a<IDesktopMenuLink>`
   background-color: ${props => props.theme.colors.primary};
   ${menutext};
   cursor: pointer;
+  text-decoration: none;
   
   &:hover {
     background-color: ${props => props.theme.colors.primaryDark};
@@ -40,30 +43,42 @@ const DesktopMenuLink = styled.a<IDesktopMenuLink>`
   ` : null}
 `;
 
-//Ensure one slash
+//Ensure one slash front, no slash end
 const normalizeLink = (href:string) => {
-  return href.startsWith('/') ? href : `/${href}`;
+  let normalized = href.startsWith('/') ? href : `/${href}`;
+  normalized = (normalized.endsWith('/') && normalized.length > 1) ? normalized.slice(0, -1) : href;
+  return normalized;
 };
 
 const DesktopMenu: React.FunctionComponent<IDesktopMenu> = ({
-  menuItems
-}) => (
-  <DesktopMenuStyled>
-    {menuItems.map((item, index) => {
+  menuItems,
+  currentId,
+}) => {
 
-      const link = normalizeLink(item.link);
+  const router = useRouter();
+  const { asPath } = router;
 
-      return (
-        <li key={`item-${index}`}>
-          <Link href={`/?as=${link}`}
-                as={`${link}`}
-          >
-            <DesktopMenuLink active={item.section}>{item.menuTitle}</DesktopMenuLink>
-          </Link>
-        </li>
-      );
-    })}
-  </DesktopMenuStyled>
-);
+  return (
+      <DesktopMenuStyled>
+        {menuItems.map((item, index) => {
+
+          const link = normalizeLink(item.link);
+
+          return (
+              <li key={`item-${index}`}>
+                <Link href={{
+                  pathname: '/[[...pageurl]]'
+                }}  // TODO: Querystring
+                      as={`${link}`}
+                      passHref
+                >
+                  <DesktopMenuLink active={item.id == currentId}>{item.menuTitle}</DesktopMenuLink>
+                </Link>
+              </li>
+          );
+        })}
+      </DesktopMenuStyled>
+  );
+};
 
 export default DesktopMenu;

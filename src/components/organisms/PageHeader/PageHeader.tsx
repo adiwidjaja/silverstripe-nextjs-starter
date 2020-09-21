@@ -7,6 +7,7 @@ import Headline from "../../atoms/Headline/Headline";
 export interface IPage {
   menu?: Array<IMenuItem>;
   siteTitle?: string;
+  currentId: number;
 }
 
 const PageHeaderStyled = styled.div`
@@ -20,6 +21,7 @@ const HeaderHeadline = styled(Headline)`
 const PageHeader: React.FunctionComponent<IPage> = ({
   menu,
   siteTitle,
+  currentId,
 }) => {
   return (
     <PageHeaderStyled>
@@ -27,7 +29,7 @@ const PageHeader: React.FunctionComponent<IPage> = ({
         {siteTitle ? <HeaderHeadline>{siteTitle}</HeaderHeadline> : null}
         {menu ? (
           <>
-            <DesktopMenu menuItems={menu}/>
+            <DesktopMenu menuItems={menu} currentId={currentId}/>
           </>
         ) : null}
       </Container>

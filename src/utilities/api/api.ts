@@ -24,12 +24,13 @@ export async function getPageData(pageurl="") {
 query {
   page(UrlSegment:"${pageurl}") {
     id: ID,
-    link: RelativeLink,
+    link: FrontendLink,
     title: Title,
+    siteTitle: SiteTitle,
     menu: Menu {
       id: ID,
       menuTitle: MenuTitle,
-      link: RelativeLink,
+      link: FrontendLink,
     },
     elements: Elements {
       id: ID,
