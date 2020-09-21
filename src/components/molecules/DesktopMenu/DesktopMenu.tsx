@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import {menutext} from "../../../styles/typography";
-import {useRouter} from "next/router";
 
 export interface IMenuItem {
   id: number,
@@ -54,10 +53,6 @@ const DesktopMenu: React.FunctionComponent<IDesktopMenu> = ({
   menuItems,
   currentId,
 }) => {
-
-  const router = useRouter();
-  const { asPath } = router;
-
   return (
       <DesktopMenuStyled>
         {menuItems.map((item, index) => {
