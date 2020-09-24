@@ -7,3 +7,4 @@ Page:
 DNADesign\Elemental\Models\BaseElement:
   extensions:
     - App\Api\BaseElementExtension
+

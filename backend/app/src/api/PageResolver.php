@@ -40,8 +40,6 @@ class PageResolver implements OperationResolver
             $page = $this->lookupPage($urlSegment, $lastParentId);
             $lastParentId = $page->ID;
         }
-
-//        Director::set_current_page($page);
         return $page;
     }
 }

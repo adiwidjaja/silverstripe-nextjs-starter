@@ -7,14 +7,15 @@ SilverStripe\GraphQL\Manager:
       scaffolding:
         types:
           Page:
-            fields: [ID, Title, MenuTitle, ClassName, URLSegment, SiteTitle, FrontendLink, PreviewLink]
+            fields: [ID, Title, MenuTitle, ClassName, URLSegment, SiteTitle,
+                     FrontendLink, PreviewLink]
             operations:
               read:
                 paginate: false
               readOne:
                 name: page
                 args:
-                  UrlSegment: String  # TODO: Sub-URL
+                  UrlSegment: String
                 resolver: App\Api\PageResolver
             nestedQueries:
               Elements:
@@ -25,3 +26,4 @@ SilverStripe\GraphQL\Manager:
                 paginate: false
           DNADesign\Elemental\Models\BaseElement:
             fields: [ID, Title, ClassName, ContentFieldsJson]
+

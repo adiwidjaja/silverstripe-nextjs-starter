@@ -4,9 +4,10 @@ namespace App\Elements;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Assets\Image;
 
-class TextImageElement extends BaseElement {
+class FaqElement extends BaseElement {
 
     private static $db = [
+        "Description" => "HTMLText",
         "Text" => "HTMLText"
     ];
 
@@ -18,7 +19,7 @@ class TextImageElement extends BaseElement {
         "Image",
     ];
 
-    private static $table_name = "TextImagelement";
+    private static $table_name = "FaqElement";
     private static $icon = 'font-icon-block-promo-3';
 
     protected function provideBlockSchema()
@@ -30,13 +31,13 @@ class TextImageElement extends BaseElement {
 
     public function getType()
     {
-        return _t(__CLASS__ . '.BlockType', 'TextImage');
+        return _t(__CLASS__ . '.BlockType', 'FAQ');
     }
 
     public function getContentFields()
     {
         $fields = parent::getContentFields();
-        $fields["ImageUrl"] = $this->getImageUrl();
+        $fields["Image"] = $this->getImageUrl();
         return $fields;
     }
 

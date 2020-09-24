@@ -26,20 +26,16 @@ const IndexPage: NextPage<IIndex> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   query,
-  req,
-  res,
 }) => {
     const {page, ...rest} = query;
-    const urlSegment = Array.isArray(page) ? page.join('/') : '';
+    const path = Array.isArray(page) ? page.join('/') : '';
 
-    // const queryString = querystring.stringify(rest);
-
-    const json = await getPageData(urlSegment);
+    const data = await getPageData(path);
 
     return {
         props: {
-            data: json,
-            path: urlSegment,
+            data,
+            path,
             query: rest,
         }
     }

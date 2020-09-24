@@ -10,7 +10,7 @@ export interface IFaqElement {
   title: string;
   description?: string,
   text: string;
-  thumbnail?: string;
+  image?: string;
 }
 
 const FaqElementStyled = styled.div``;
@@ -37,14 +37,14 @@ const FaqElement: React.FunctionComponent<IFaqElement> = ({
   title,
   description,
   text,
-  thumbnail,
+  image,
 }) => {
   const [open, setOpen] = useState(false);
   return (
     <FaqElementStyled>
       <FaqContainer>
-        {thumbnail ? <FaqImageContainer>
-          <FaqImage src={thumbnail}/>
+        {image ? <FaqImageContainer>
+          <FaqImage src={image}/>
         </FaqImageContainer> : null}
         <FaqContent>
           <Headline>{title}</Headline>

@@ -6,7 +6,6 @@
         "php": ">=7.1.0",
         "silverstripe/recipe-plugin": "^1.2",
         "silverstripe/recipe-cms": "4.6.1@stable",
-        "silverstripe-themes/simple": "~3.2.0",
         "silverstripe/login-forms": "4.1.2@stable",
         "dnadesign/silverstripe-elemental": "^4.4",
       "ext-json": "*"
