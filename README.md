@@ -5,6 +5,8 @@ Silverstripe CMS.
 
 It was used in a presentation on Virtual StripeCon 2020:
 https://speakerdeck.com/adiwidjaja/go-headless-but-dont-lose-your-head
+Video can be found here:
+https://youtu.be/0WN60I3o19s
 
 ## Installation
 
